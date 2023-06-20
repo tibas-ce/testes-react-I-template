@@ -46,4 +46,20 @@ describe("Counter", () => {
 
     expect(value).toBeInTheDocument();
   });
+
+  test("Fixação - Deve aumentar o valor do contador em 3 quando o botão de incremento for clicado", async () => {
+    const user = userEvent.setup();
+
+    render(<Counter />);
+
+    const incrementButton = screen.getByText("+");
+
+    await user.click(incrementButton);
+    await user.click(incrementButton);
+    await user.click(incrementButton);
+
+    const value = screen.getByText("3");
+
+    expect(value).toBeInTheDocument();
+  });
 });
